@@ -1,6 +1,20 @@
 # How to be a Good Kubernetes Neighbor - Lab
 
 Welcome to the lab component of "How to be a Good Kubernetes Neighbor"!
+- [How to be a Good Kubernetes Neighbor - Lab](#how-to-be-a-good-kubernetes-neighbor---lab)
+  - [Estimated Time](#estimated-time)
+  - [Target Audience](#target-audience)
+  - [Learning Objectives](#learning-objectives)
+  - [Prerequites](#prerequites)
+  - [Steps](#steps)
+    - [Inspect the Deployment Files](#inspect-the-deployment-files)
+    - [Why Are We Doing This?](#why-are-we-doing-this)
+    - [Using Kubecost to Get the Recommendations](#using-kubecost-to-get-the-recommendations)
+    - [Inspect Recommendations](#inspect-recommendations)
+    - [Update Resources Limits](#update-resources-limits)
+    - [Add Team Label](#add-team-label)
+    - [Stage and Production Environments](#stage-and-production-environments)
+  - [Completion and Next Steps](#completion-and-next-steps)
 
 ## Estimated Time
 
@@ -29,7 +43,7 @@ By the end of this lab, you should be able to:
 
 ## Steps
 
-### Inspect the deployment files
+### Inspect the Deployment Files
 
 1. Open `deployment-int.yaml` in your favorite text editor (e.g. VSCode).
 2. Look at line 22-25. These are the resources that this deployment is requesting
@@ -46,13 +60,13 @@ The other two deployment files also share the same request values. At this point
 
 This is where Kubecost comes in. We use Kubecost to help analyze past metrics and to recommend the correct CPU and memory values.
 
-## Why Are We Doing This?
+### Why Are We Doing This?
 
 If your containers are **overprovisioned**, you are taking up resources that could have otherwise used by other containers. In other words, you are being a **bad neighbor**! Moreover, the unused resources are costing extra money too. 
 
 If your containers are **underprovisioned**, your application may suffer from poor performances, or even shuts off unexpectedly.
 
-## Using Kubecost to Get the Recommendations
+### Using Kubecost to Get the Recommendations
 
 1. On your web browser, open the Kubecost **Request Sizing Recommendations** page: https://kubecost.namely.land/request-sizing.html. You should see a 
 2. Since we are doing *int* environment first, click the **Switch Cluster** button on the lower-left corner and switch to *int*
@@ -66,7 +80,7 @@ Here is what the page should look like at this point:
 
 Since the metrics and recommendations change all the time, for consistency we will be using the numbers from the above screenshot to proceed.
 
-## Inspect Recommendations
+### Inspect Recommendations
 
 In the screenshot, locate the `logdna-agent` container in the **Breakdown** section near the bottom. 
 
@@ -74,7 +88,7 @@ The CPU usage is `10.9m` and the CPU request is `20m`, so Kubecost is recommendi
 
 Next, we will copy the recommended numbers (`14m` and `25MiB` rounded up) and update them into our manifest file.
 
-## Update Resources Limits
+### Update Resources Limits
 
 Open `deployment-int.yaml` again in your text editor. In line 24, replaced the `cpu` value with `14m` and in line 25, replaced the `memory` value with `25MiB`. 
 
@@ -88,7 +102,7 @@ resources:
 
 Save the file, but there's one more thing that we should add...the team label.
 
-## Add Team Label
+### Add Team Label
 
 It is generally a good practice to establish ownership so we know who "owns" what. Looking at `deployment-int.yaml`, we have no idea which team "owns" it. A way to do this in Kubernetes is to put a [label](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) on the pods. 
 
@@ -111,7 +125,7 @@ spec:
         team: my-team
 ```
 
-## Stage and Production Environments
+### Stage and Production Environments
 
 The steps for higher level environments are the same as above, except that you are going to use *Production* profile instead of *Development*, since we are expecting higher resource utilization.
 
