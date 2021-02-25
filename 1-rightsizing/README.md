@@ -68,7 +68,7 @@ If your containers are **underprovisioned**, your application may suffer from po
 
 ### Using Kubecost to Get the Recommendations
 
-1. On your web browser, open the Kubecost **Request Sizing Recommendations** page: https://kubecost.namely.land/request-sizing.html. You should see a 
+1. On your web browser, open the Kubecost **Request Sizing Recommendations** page: https://kubecost.namely.land/request-sizing.html.
 2. Since we are doing *int* environment first, click the **Switch Cluster** button on the lower-left corner and switch to *int*
 3. In the main viewport, change the following values:
    1. **Profile**: choose *Development* (*Production* profile is for *stg* and *prd* clusters)
