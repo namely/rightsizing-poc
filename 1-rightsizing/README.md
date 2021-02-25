@@ -62,7 +62,7 @@ This is where Kubecost comes in. We use Kubecost to help analyze past metrics an
 
 ### Why Are We Doing This?
 
-If your containers are **overprovisioned**, you are taking up resources that could have otherwise used by other containers. In other words, you are being a **bad neighbor**! Moreover, the unused resources are costing extra money too. 
+If your containers are **overprovisioned**, you are taking up resources that could have otherwise used by other containers. In other words, you are being a **bad neighbor**! Moreover, the unused resources are costing extra money too. :money_with_wings:
 
 If your containers are **underprovisioned**, your application may suffer from poor performances, or even shuts off unexpectedly.
 
@@ -106,7 +106,7 @@ Save the file, but there's one more thing that we should add...the team label.
 
 It is generally a good practice to establish ownership so we know who "owns" what. Looking at `deployment-int.yaml`, we have no idea which team "owns" it. A way to do this in Kubernetes is to put a [label](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) on the pods. 
 
-Amongst other things, Kubecost uses this label to break down the cost incurred per team so we can see which team is using more resources!
+Amongst other things, Kubecost uses this label to break down the cost incurred per team so we can see which team is using more resources! :smiling_imp:
 
 Return to `deployment-int.yaml`. We will add a new key value `team: <your team name>` under `spec.template.metadata.labels`, or under line 15. Doing so will add this label to all the pods the deployment creates.
 
