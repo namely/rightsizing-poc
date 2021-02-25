@@ -86,6 +86,10 @@ In the screenshot, locate the `logdna-agent` container in the **Breakdown** sect
 
 The CPU usage is `10.9m` and the CPU request is `20m`, so Kubecost is recommending a slightly smaller request at `14m`. On the other hand, RAM usage is only `19.5MiB` but this container is requesting `300.MiB` - a classic case of **bad neighbor**! Kubecost is recommending a much smaller number at `24.8MiB`, which we can round up to `25MiB`.
 
+Before moving on, let's look at the last two columns. The **Efficiency** column is calculated by *usage/request* - high % means that the usage matches the requests very well. Unfortunately, this container has a low, low score of 6.9%! :scream:
+
+Finally, the **Savings** column shows you how much you can save by resizing the requests. $14.66/mo for 1 container may not seem much, but when we concert our effort to resize hundreds of containers, the savings can be significant.
+
 Next, we will copy the recommended numbers (`14m` and `25MiB` rounded up) and update them into our manifest file.
 
 ### Update Resources Limits
