@@ -55,7 +55,7 @@ By the end of this lab, you should be able to:
     ```
 
 The other two deployment files also share the same request values. At this point, we may have the following questions:
- - shouldn't prd environment have more traffic than stg and int, since it has more traffic?
+ - shouldn't higher environments allocate more resources than the lower ones (e.g. prd > stg > int), since it has more traffic?
  - are these the right value? In other words, are we requesting too much resources (aka overprovisioning)...or too little (aka underprovisioning)?
 
 This is where Kubecost comes in. We use Kubecost to help analyze past metrics and to recommend the correct CPU and memory values.
