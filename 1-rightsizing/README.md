@@ -135,4 +135,4 @@ The steps for higher level environments are the same as above, except that:
 
 In this demo, you have retrieved the recommended requests values from Kubecost, and updated the manifests accordingly. You have also added a team label to the metadata to establish team ownership. 
 
-In a real-life scenario, you would also redeploy your resources with the updated requests values. Instead of having a manifest for each environment which requires you to update the files one-by-one, you may use tools like Spinnaker to parameterize the manifests instead. The bottom line is, you are being a good neighbor and saving Namely some money!
+In a real-life scenario, you would also redeploy your resources with the updated requests values. Instead of having a manifest for each environment which requires you to update the files one-by-one, you may use tools like Spinnaker to parameterize the manifests instead. The bottom line is, you are being a good neighbor and saving Namely some money! :moneybag:
