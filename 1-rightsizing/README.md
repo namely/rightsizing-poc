@@ -127,7 +127,9 @@ spec:
 
 ### Stage and Production Environments
 
-The steps for higher level environments are the same as above, except that you are going to use *Production* profile instead of *Development*, since we are expecting higher resource utilization.
+The steps for higher level environments are the same as above, except that:
+- you will need to switch the cluster (lower-left corner in the UI) to stg or prd
+- you are going to use *Production* profile instead of *Development*, since we are expecting higher resource utilization.
 
 ## Completion and Next Steps
 
