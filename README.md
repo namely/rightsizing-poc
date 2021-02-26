@@ -72,7 +72,7 @@ If your containers are **underprovisioned**, your application may suffer from po
 2. Since we are doing *int* environment first, click the **Switch Cluster** button on the lower-left corner and switch to *int*
 3. In the main viewport, change the following values:
    1. **Profile**: choose *Development* (*Production* profile is for *stg* and *prd* clusters)
-   2. **Window**: for this demo, choose *1 day*
+   2. **Window**: for this demo, choose *1 day*, though normally you would choose 7 or 30 days
    3. **Owner Name**: since this demo doesn't actually exist in our Kubecost, choose `logdna-agent`. If you don't choose an owner name, you may find it very hard to find your containers, as there are hundreds of them!
 
 Here is what the page should look like at this point:
@@ -139,4 +139,10 @@ The steps for higher level environments are the same as above, except that:
 
 In this demo, you have retrieved the recommended requests values from Kubecost, and updated the manifests accordingly. You have also added a team label to the metadata to establish team ownership. 
 
-In a real-life scenario, you would also redeploy your resources with the updated requests values. Instead of having a manifest for each environment which requires you to update the files one-by-one, you may use tools like Spinnaker to parameterize the manifests instead. The bottom line is, you are being a good neighbor and saving Namely some money! :moneybag:
+In a real-life scenario, you would also redeploy your resources with the updated requests values. Instead of having a manifest for each environment which requires you to update the files one-by-one, you may use tools like Spinnaker to parameterize the manifests instead. 
+
+You will also not likely to use the 1-day window because that's too small and doesn't cover "spikes":
+- choose `7 days` if your application has a "daily" cycle of activity
+- choose `30 days` if your application has more of a "weekly" or "monthly" cycle of activity
+
+The bottom line is, you are being a good neighbor and saving Namely some money! :moneybag:
