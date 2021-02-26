@@ -75,7 +75,9 @@ If your containers are **underprovisioned**, your application may suffer from po
    2. **Window**: for this lab, choose *1 day* (though normally you would choose 7 or 30 days)
    
    Wait for the sections to finish rendering - in some cases, this process may take a minute to complete.
-4. Before moving on, let's scroll down to inspect the rendered sections. The **Summary** section shows how much we can potentially save by adjusting the requests in the cluster. It can be thousands of dollars per month per cluster - a pretty significant amount.
+4. Before moving on, let's scroll down to inspect the rendered sections. 
+   
+   The **Summary** section shows how much we can potentially save by adjusting the requests in the cluster. It can be thousands of dollars per month per cluster - a pretty significant amount.
 
    The **Breakdown** section lists all individual containers (aka daemonset, deployment, job, replicaset) in the cluster. By default, they are sorted by the amount of potential savings per month, but all columns can be sorted. Feel free to play around with them for a minute.
 5. You may notice that there are hundreds of containers available and it can be hard to find your containers. Scroll back up to the **Request Sizing Recommendations** and locate the **Owner Name** filter. Using this filter, you can limit the results to those that match the container's name (from the manifest's metadata). For this lab, we will be using `logdna-agent` as the owner name.
