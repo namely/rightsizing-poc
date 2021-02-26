@@ -68,9 +68,11 @@ If your containers are **underprovisioned**, your application may suffer from po
 
 ### Using Kubecost to Get the Recommendations
 
-1. On your web browser, open the Kubecost **Request Sizing Recommendations** page: https://kubecost.namely.land/request-sizing.html.
-2. Since we are doing the *int* environment first, click the **Switch Cluster** button on the lower-left corner and switch to *int*.
-3. In the main viewport, locate the following filters and change their values:
+1. On your web browser, open Kubecost: https://kubecost.namely.land/. You should see a list of available clusters.
+2. Since we are doing the *int* environment first, click *int* from the list.
+3. Click **Savings** and let the page renders the page. This may take up to 60 seconds.
+4. Once the page finishes rendering, click **Pods with over-provisioned requests** to go to the **Request Sizing Recommendations** page.
+5. In the main viewport, locate the following filters and change their values:
    1. **Profile**: choose *Development* (*Production* profile is for *stg* and *prd* clusters)
    2. **Window**: for this lab, choose *1 day* (though normally you would choose 7 or 30 days)
    
