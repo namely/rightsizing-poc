@@ -36,16 +36,16 @@ By the end of this lab, you should be able to:
     ```
     git clone git@github.com:namely/rightsizing-poc.git
     ```
-2. Navigate to the `rightsizing-poc` folder. There should be 3 yaml files (aka manifests) in there. These are the configuration files for 1 simple nginx deployment for each environment:
+2. Navigate to the `rightsizing-poc/manifests` folder. There should be 3 yaml files (aka manifests) in there. These are the configuration files for 1 simple nginx deployment for each environment:
     ```
-    cd rightsizing-poc/
+    cd rightsizing-poc/manifests
     ```
 
 ## Steps
 
 ### Inspect the Deployment Files
 
-1. Open `deployment-int.yaml` in your favorite text editor (e.g. VSCode).
+1. Open `manifests/deployment-int.yaml` in your favorite text editor (e.g. VSCode).
 2. Look at line 22-25. These are the resources that this deployment is requesting:
     ```yaml
     resources:
@@ -81,7 +81,7 @@ If your containers are **underprovisioned**, your application may suffer from po
 5. You may notice that there are hundreds of containers available and it can be hard to find your containers. Scroll back up to the **Request Sizing Recommendations** and locate the **Owner Name** filter. Using this filter, you can limit the results to those that match the container's name (from the manifest's metadata). For this lab, we will be using `logdna-agent` as the owner name.
 
 Here is what the page should look like at this point:
-![before](./before.png)
+![before](images/before.png)
 
 Since the metrics and recommendations change all the time, for consistency we will be using the numbers from the above screenshot to proceed.
 
@@ -110,7 +110,7 @@ Next, we will copy the recommended numbers (`14m` and `25MiB` rounded up) and up
 
 ### Update Resources Limits
 
-Open `deployment-int.yaml` again in your text editor. In line 24, replaced the `cpu` value with `14m` and in line 25, replaced the `memory` value with `25MiB`. 
+Open `manifests/deployment-int.yaml` again in your text editor. In line 24, replaced the `cpu` value with `14m` and in line 25, replaced the `memory` value with `25MiB`. 
 
 The `resources` block should look like this now:
 ```yaml
@@ -124,11 +124,11 @@ Save the file, but there's one more thing that we should add...the team label.
 
 ### Add Team Label
 
-It is generally a good practice to establish ownership so we know who "owns" what. Looking at `deployment-int.yaml`, we have no idea which team "owns" it. A way to do this in Kubernetes is to put a [label](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) on the pods. 
+It is generally a good practice to establish ownership so we know who "owns" what. Looking at `manifests/deployment-int.yaml`, we have no idea which team "owns" it. A way to do this in Kubernetes is to put a [label](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) on the pods. 
 
 Among other things, Kubecost uses this label to break down the cost incurred per team so we can see which team is using more resources! :smiling_imp:
 
-Return to `deployment-int.yaml`. We will add a new key value `team: <your team name>` under `spec.template.metadata.labels`, or under line 15. Doing so will add this label to all the pods the deployment creates.
+Return to `manifests/deployment-int.yaml`. We will add a new key value `team: <your team name>` under `spec.template.metadata.labels`, or under line 15. Doing so will add this label to all the pods the deployment creates.
 
 the `spec.template.metadata.labels` should look like this now:
 ```yaml
@@ -147,7 +147,7 @@ spec:
 The lab stops here. In a real-life scenario, you would be applying the manifest to redeploy the pods, and Kubecost will reflect the changes ~2 hours after the redeployment.
 
 Just to show you the outcome, here is what `logdna-agent` in the *int* cluster looks like after rightsizing:
-![after](./after.png)
+![after](images/after.png)
 
 We just saved $13/mo! Not bad, right?
 
