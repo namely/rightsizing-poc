@@ -150,10 +150,10 @@ not bad, right? We saved $13/mo!
 ### What about Stage and Production Environments?
 
 The steps for higher level environments are the same as above, except that:
-- you will need to switch the cluster (lower-left corner in the UI) to stg or prd
+- you will need to switch the cluster (lower-left corner in the UI) to *stg* or *prd*
 - you are going to use *Production* profile instead of *Development*, since we are expecting higher resource utilization
 
-the different cluster and profile will generate a different set of recommendations (more than likely higher values).You may then update the corresponding manifests and apply.
+choosing the different cluster and profile will generate a different set of recommendations (more than likely higher values).You may then update the corresponding manifests and apply.
 
 ## Completion and Next Steps
 
@@ -165,4 +165,4 @@ You will also not likely to use the 1-day window because that's too small and do
 - choose `7 days` if your application has a "daily" cycle of activity
 - choose `30 days` if your application has more of a "weekly" or "monthly" cycle of activity
 
-The bottom line is, you are being a good neighbor and saving Namely some money! :moneybag:
+The bottom line is, by using Kubecost to rightsize your resource requests, you are being a good neighbor and saving Namely some money! :moneybag:
