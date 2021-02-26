@@ -49,9 +49,9 @@ By the end of this lab, you should be able to:
 2. Look at line 22-25. These are the resources that this deployment is requesting:
     ```yaml
     resources:
-          requests:
-            cpu: 20m
-            memory: 300Mi
+      requests:
+        cpu: 20m
+        memory: 300Mi
     ```
 
 The other two deployment files also share the same request values. At this point, we may have the following questions:
@@ -72,10 +72,10 @@ If your containers are **underprovisioned**, your application may suffer from po
 2. Since we are doing the *int* environment first, click the **Switch Cluster** button on the lower-left corner and switch to *int*.
 3. In the main viewport, change the following values:
    1. **Profile**: choose *Development* (*Production* profile is for *stg* and *prd* clusters)
-   2. **Window**: for this lab, choose *1 day*, though normally you would choose 7 or 30 days
+   2. **Window**: for this lab, choose *1 day* (though normally you would choose 7 or 30 days)
    
    Wait for the sections to finish rendering - it may take 30-60 seconds.
-4. Before moving on, let's inspect the rendered sections. The **Summary** section shows how much we can potentially save by adjusting the requests in the cluster. It can be thousands of dollars per month per cluster - a pretty significant amount.
+4. Before moving on, let's scroll down to inspect the rendered sections. The **Summary** section shows how much we can potentially save by adjusting the requests in the cluster. It can be thousands of dollars per month per cluster - a pretty significant amount.
 
    The **Breakdown** section lists all individual containers (aka daemonset, deployment, job, replicaset) in the cluster. By default, they are sorted by the amount of potential savings per month, but all columns can be sorted. Feel free to play around with them for a minute.
 5. You may notice that there are hundreds of containers available and it can be hard to find your containers. Scroll back up to the **Request Sizing Recommendations** and locate the **Owner Name** filter. Using this filter, you can limit the results to those that match the container's name (from the manifest's metadata). For this lab, we will be using `logdna-agent` as the owner name.
@@ -110,7 +110,7 @@ Open `deployment-int.yaml` again in your text editor. In line 24, replaced the `
 The `resources` block should look like this now:
 ```yaml
 resources:
-    requests:
+  requests:
     cpu: 14m
     memory: 25Mi
 ```
@@ -150,10 +150,10 @@ not bad, right? We saved $13/mo!
 ### What about Stage and Production Environments?
 
 The steps for higher level environments are the same as above, except that:
-- you will need to switch the cluster (lower-left corner in the UI) to stg or prd
+- you will need to switch the cluster (lower-left corner in the UI) to *stg* or *prd*
 - you are going to use *Production* profile instead of *Development*, since we are expecting higher resource utilization
 
-the different cluster and profile will generate a different set of recommendations (more than likely higher values).You may then update the corresponding manifests and apply.
+choosing the different cluster and profile will generate a different set of recommendations (more than likely higher values).You may then update the corresponding manifests and apply.
 
 ## Completion and Next Steps
 
@@ -165,4 +165,4 @@ You will also not likely to use the 1-day window because that's too small and do
 - choose `7 days` if your application has a "daily" cycle of activity
 - choose `30 days` if your application has more of a "weekly" or "monthly" cycle of activity
 
-The bottom line is, you are being a good neighbor and saving Namely some money! :moneybag:
+The bottom line is, by using Kubecost to rightsize your resource requests, you are being a good neighbor and saving Namely some money! :moneybag:
