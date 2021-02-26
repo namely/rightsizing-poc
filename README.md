@@ -110,7 +110,7 @@ Next, we will copy the recommended numbers (`14m` and `25MiB` rounded up) and up
 
 ### Update Resources Limits
 
-Open `manifests/deployment-int.yaml` again in your text editor. In line 24, replaced the `cpu` value with `14m` and in line 25, replaced the `memory` value with `25MiB`. 
+Open `deployment-int.yaml` again in your text editor. In line 24, replaced the `cpu` value with `14m` and in line 25, replaced the `memory` value with `25MiB`. 
 
 The `resources` block should look like this now:
 ```yaml
@@ -124,11 +124,11 @@ Save the file, but there's one more thing that we should add...the team label.
 
 ### Add Team Label
 
-It is generally a good practice to establish ownership so we know who "owns" what. Looking at `manifests/deployment-int.yaml`, we have no idea which team "owns" it. A way to do this in Kubernetes is to put a [label](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) on the pods. 
+It is generally a good practice to establish ownership so we know who "owns" what. Looking at `deployment-int.yaml`, we have no idea which team "owns" it. A way to do this in Kubernetes is to put a [label](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) on the pods. 
 
 Among other things, Kubecost uses this label to break down the cost incurred per team so we can see which team is using more resources! :smiling_imp:
 
-Return to `manifests/deployment-int.yaml`. We will add a new key value `team: <your team name>` under `spec.template.metadata.labels`, or under line 15. Doing so will add this label to all the pods the deployment creates.
+Return to `deployment-int.yaml`. We will add a new key value `team: <your team name>` under `spec.template.metadata.labels`, or under line 15. Doing so will add this label to all the pods the deployment creates.
 
 the `spec.template.metadata.labels` should look like this now:
 ```yaml
