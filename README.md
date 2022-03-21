@@ -1,4 +1,7 @@
 # How to be a Good Kubernetes Neighbor - Lab
+ 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/36e7d043964b41c4bda8b815c2580c3c)](https://app.codacy.com/gh/namely/rightsizing-poc/dashboard)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/36e7d043964b41c4bda8b815c2580c3c)](https://app.codacy.com/gh/namely/rightsizing-poc/dashboard)
 
 Welcome to the lab component of "How to be a Good Kubernetes Neighbor"!
 - [How to be a Good Kubernetes Neighbor - Lab](#how-to-be-a-good-kubernetes-neighbor---lab)
